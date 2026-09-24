@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+.industry-icons {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+
+    height: 80px;
+    padding: 8px 6px;
+
+    overflow: visible;
+}
+
+.industry-item {
+    position: relative;
+
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.industry-item img {
+    width: 52px;
+    height: 52px;
+
+    display: block;
+    object-fit: cover;
+
+    border-radius: 50%;
+    border: 2px solid transparent;
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        opacity 0.18s ease;
+}
+
+/* Фиолетовая обводка при наведении */
+.industry-item:hover img,
+.industry-item:focus img {
+    transform: scale(1.05);
+    border-color: #7a3f8f;
+
+    box-shadow:
+        0 0 0 2px rgba(122, 63, 143, 0.10),
+        0 4px 10px rgba(105, 54, 128, 0.18);
+}
+
+
+/* Tooltip */
+.industry-tooltip {
+    position: absolute;
+
+    left: 50%;
+    bottom: 35px;
+
+    transform:
+        translateX(-50%)
+        translateY(3px);
+
+    min-width: 115px;
+    max-width: 170px;
+
+    padding: 5px 7px;
+
+    background: rgba(255,255,255,0.97);
+
+    color: #6f3b80;
+
+    border: 1px solid #c9b2d2;
+    border-radius: 5px;
+
+    box-shadow:
+        0 3px 9px rgba(80, 40, 95, 0.16);
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+
+    z-index: 50;
+}
+
+
+/* При наведении иконка слегка приглушается,
+   чтобы подпись хорошо читалась */
+.industry-item:hover img,
+.industry-item:focus img {
+    opacity: 0.90;
+}
+
+
+/* Показываем подпись */
+.industry-item:hover .industry-tooltip,
+.industry-item:focus .industry-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* Чтобы подсказка у первой и последней иконки
+   не слишком уходила за край */
+.industry-item:first-child .industry-tooltip {
+    left: 0;
+    transform: translateX(0) translateY(3px);
+}
+
+.industry-item:first-child:hover .industry-tooltip,
+.industry-item:first-child:focus .industry-tooltip {
+    transform: translateX(0) translateY(0);
+}
+
+.industry-item:last-child .industry-tooltip {
+    left: auto;
+    right: 0;
+    transform: translateX(0) translateY(3px);
+}
+
+.industry-item:last-child:hover .industry-tooltip,
+.industry-item:last-child:focus .industry-tooltip {
+    transform: translateX(0) translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="industry-icons">
+
+
+    <div class="industry-item" tabindex="0">
+        <img
+            src="./IT.png"
+            alt="ИТ"
+        >
+        <div class="industry-tooltip">
+            ИТ
+        </div>
+    </div>
+
+
+    <div class="industry-item" tabindex="0">
+        <img
+            src="./telecom.png"
+            alt="Телеком"
+        >
+        <div class="industry-tooltip">
+            Телеком
+        </div>
+    </div>
+
+
+    <div class="industry-item" tabindex="0">
+        <img
+            src="./proect.png"
+            alt="Проектные и инжиниринговые компании"
+        >
+        <div class="industry-tooltip">
+            Проектные и инжиниринговые компании
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
